@@ -1,20 +1,12 @@
 <main class="main">
-  
   <div class="inner">
+    <% if user_signed_in? %>
     <%# ログインしているときは以下を表示する %>
-    
-    <% if user_singed_in? %>
       <div class="greeting"> 
-      ログインしています
-      <%= link_to ’ログアウト’ destroy_user_session method: delete %>
-      </div>
-      <% else %>
-      <%= link_to ’新規登録’ new_user_registration_path%>
-      <%= link_to ’ログイン’ new_user_session_path%>
-    <% end %>
-        <%# こんにちは、 %>
-        <%# <%= link_to "ユーザー名さん", root_path, class: :greeting__link%>
-      <%# </div> %>
+        こんにちは、 
+        <%= link_to "#{current_user.name}さん", user_path(current_user), class: :greeting__link%>
+      </div> 
+      <% end %>
     <%# // ログインしているときは上記を表示する %>
     <div class="card__wrapper">
       <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
